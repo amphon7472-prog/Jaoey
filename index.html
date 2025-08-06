@@ -46,12 +46,11 @@
     }
     /* กล่องข้อความรัก */
     #loveMessage {
-      display: none;
+      display: none; /* ซ่อนตั้งแต่เริ่มต้น */
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(255,182,193,0.95);
-      display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
@@ -77,33 +76,4 @@
   </div>
 
   <div id="loveMessage">
-    <h2>💖 เค้าก็รักแกเหมือนกันน 💖</h2>
-  </div>
-
-  <script>
-    const noBtn = document.getElementById('no');
-    const yesBtn = document.getElementById('yes');
-    const loveMsg = document.getElementById('loveMessage');
-    let noScale = 1;
-    let yesScale = 1;
-
-    noBtn.addEventListener('mouseover', function() {
-      // ปรับขนาดปุ่ม No
-      noScale -= 0.2;
-      if (noScale <= 0) {
-        noBtn.style.display = "none";
-      } else {
-        noBtn.style.transform = `scale(${noScale})`;
-      }
-
-      // ปรับขนาดปุ่ม Yes
-      yesScale += 0.2;
-      yesBtn.style.transform = `scale(${yesScale})`;
-    });
-
-    yesBtn.addEventListener('click', function() {
-      loveMsg.style.display = 'flex';
-    });
-  </script>
-</body>
-</html>
+    <h2>💖
