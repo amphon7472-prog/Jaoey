@@ -23,7 +23,7 @@
       margin-top: 30px;
       position: relative;
       width: 100%;
-      height: 100px;
+      height: 200px;
     }
     button {
       padding: 15px 40px;
@@ -37,8 +37,8 @@
     #yes {
       background: #ff6699;
       color: white;
-      left: 40%; /* ตำแหน่งเริ่มต้น */
-      top: 0;
+      left: 40%;
+      top: 50px;
     }
     #yes:hover {
       background: #ff3366;
@@ -46,12 +46,12 @@
     #no {
       background: #ccc;
       color: #333;
-      left: 55%; /* ตำแหน่งเริ่มต้น */
-      top: 0;
+      left: 55%;
+      top: 50px;
     }
     /* กล่องข้อความรัก */
     #loveMessage {
-      display: none; 
+      display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
@@ -81,7 +81,7 @@
   </div>
 
   <div id="loveMessage">
-    <h2>💖 เค้าก็รักแกเหมือนกันน 💖</h2>
+    <h2>💖 เค้าก็รักอ้วนน้าา 💖</h2>
   </div>
 
   <script>
@@ -93,20 +93,21 @@
       const bodyWidth = window.innerWidth - noBtn.offsetWidth;
       const bodyHeight = window.innerHeight - noBtn.offsetHeight;
       const newX = Math.floor(Math.random() * bodyWidth);
-      const newY = Math.floor(Math.random() * (bodyHeight - 50)); // กันไม่ให้ทับหัวข้อ
+      const newY = Math.floor(Math.random() * bodyHeight);
       noBtn.style.left = newX + "px";
       noBtn.style.top = newY + "px";
     }
 
-    // สำหรับคอมพิวเตอร์
+    // หนีในคอม
     noBtn.addEventListener('mouseover', moveNoButton);
 
-    // สำหรับมือถือ
+    // หนีในมือถือ
     noBtn.addEventListener('touchstart', function(e) {
       e.preventDefault();
       moveNoButton();
     });
 
+    // กด Yes แล้วโชว์ข้อความ
     yesBtn.addEventListener('click', function() {
       loveMsg.style.display = 'flex';
     });
