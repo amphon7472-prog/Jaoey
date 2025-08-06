@@ -12,15 +12,7 @@
       background: linear-gradient(to right, pink, lightblue);
       font-family: 'Arial', sans-serif;
       flex-direction: column;
-    }
-    .question {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .question img {
-      width: 120px;
-      height: auto;
+      overflow: hidden;
     }
     h1 {
       color: #ff3399;
@@ -41,6 +33,7 @@
     #yes {
       background: #ff6699;
       color: white;
+      transform: scale(1);
     }
     #yes:hover {
       background: #ff3366;
@@ -48,7 +41,10 @@
     #no {
       background: #ccc;
       color: #333;
+      position: relative;
+      transform: scale(1);
     }
+    /* กล่องข้อความรัก */
     #loveMessage {
       display: none;
       position: fixed;
@@ -59,24 +55,22 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      z-index: 10;
+      animation: fadeIn 1s ease forwards;
     }
     #loveMessage h2 {
       font-size: 3em;
       color: #ff3366;
       text-align: center;
     }
-    #loveMessage img {
-      width: 150px;
-      margin-top: 20px;
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
 <body>
-  <div class="question">
-    <img id="bunny" src="images/bunny-happy.png" alt="กระต่ายยิ้มดีใจ">
-    <h1>รักเค้ามั้ย 💕</h1>
-  </div>
-
+  <h1>รักเค้ามั้ย 💕</h1>
   <div class="buttons">
     <button id="yes">Yes</button>
     <button id="no">No</button>
@@ -84,32 +78,29 @@
 
   <div id="loveMessage">
     <h2>💖 เค้าก็รักแกเหมือนกันน 💖</h2>
-    <img src="images/bunny-happy.png" alt="กระต่ายยิ้มดีใจ">
   </div>
 
   <script>
     const noBtn = document.getElementById('no');
     const yesBtn = document.getElementById('yes');
-    const bunnyImg = document.getElementById('bunny');
     const loveMsg = document.getElementById('loveMessage');
-    let noClickCount = 0;
+    let noScale = 1;
+    let yesScale = 1;
 
-    // กดปุ่ม No ได้ 4 ครั้ง
-    noBtn.addEventListener('click', function() {
-      noClickCount++;
-
-      if (noClickCount <= 2) {
-        bunnyImg.src = "images/bunny-sad.png"; // กระต่ายเศร้า
-      } else if (noClickCount <= 4) {
-        bunnyImg.src = "images/bunny-cry.png"; // กระต่ายร้องไห้
+    noBtn.addEventListener('mouseover', function() {
+      // ปรับขนาดปุ่ม No
+      noScale -= 0.2;
+      if (noScale <= 0) {
+        noBtn.style.display = "none";
+      } else {
+        noBtn.style.transform = `scale(${noScale})`;
       }
 
-      if (noClickCount >= 4) {
-        noBtn.style.display = "none"; // ซ่อนปุ่ม No หลังครั้งที่ 4
-      }
+      // ปรับขนาดปุ่ม Yes
+      yesScale += 0.2;
+      yesBtn.style.transform = `scale(${yesScale})`;
     });
 
-    // กดปุ่ม Yes เท่านั้นถึงจะขึ้นข้อความ
     yesBtn.addEventListener('click', function() {
       loveMsg.style.display = 'flex';
     });
