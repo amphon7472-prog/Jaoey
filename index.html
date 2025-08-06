@@ -12,7 +12,6 @@
       background: linear-gradient(to right, pink, lightblue);
       font-family: 'Arial', sans-serif;
       flex-direction: column;
-      overflow: hidden;
     }
     .question {
       display: flex;
@@ -50,7 +49,6 @@
       background: #ccc;
       color: #333;
     }
-    /* กล่องข้อความรัก */
     #loveMessage {
       display: none;
       position: fixed;
@@ -61,8 +59,6 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      z-index: 10;
-      animation: fadeIn 1s ease forwards;
     }
     #loveMessage h2 {
       font-size: 3em;
@@ -73,15 +69,11 @@
       width: 150px;
       margin-top: 20px;
     }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
   </style>
 </head>
 <body>
   <div class="question">
-    <img id="bunny" src="https://i.ibb.co/7zGQ8Hc/cute-bunny.png" alt="กระต่ายยิ้มดีใจ">
+    <img id="bunny" src="images/bunny-happy.png" alt="กระต่ายยิ้มดีใจ">
     <h1>รักเค้ามั้ย 💕</h1>
   </div>
 
@@ -92,34 +84,8 @@
 
   <div id="loveMessage">
     <h2>💖 เค้าก็รักแกเหมือนกันน 💖</h2>
-    <img src="https://i.ibb.co/7zGQ8Hc/cute-bunny.png" alt="กระต่ายยิ้มดีใจ">
+    <img src="images/bunny-happy.png" alt="กระต่ายยิ้มดีใจ">
   </div>
 
   <script>
-    const noBtn = document.getElementById('no');
-    const yesBtn = document.getElementById('yes');
-    const bunnyImg = document.getElementById('bunny');
-    const loveMsg = document.getElementById('loveMessage');
-
-    let noClickCount = 0;
-
-    noBtn.addEventListener('click', function() {
-      noClickCount++;
-
-      if (noClickCount <= 2) {
-        bunnyImg.src = "https://i.ibb.co/RyX5KfP/sad-bunny.png"; // กระต่ายเศร้า
-      } else if (noClickCount <= 4) {
-        bunnyImg.src = "https://i.ibb.co/q7y7d9y/crying-bunny.png"; // กระต่ายร้องไห้
-      }
-
-      if (noClickCount >= 4) {
-        noBtn.style.display = "none"; // ซ่อนปุ่ม No หลังครั้งที่ 4
-      }
-    });
-
-    yesBtn.addEventListener('click', function() {
-      loveMsg.style.display = 'flex';
-    });
-  </script>
-</body>
-</html>
+    const noBtn
