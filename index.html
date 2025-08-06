@@ -1,27 +1,115 @@
-<script>
-  const noBtn = document.getElementById('no');
-  const yesBtn = document.getElementById('yes');
-  const loveMsg = document.getElementById('loveMessage');
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>คำถามสำหรับเธอ 💖</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, pink, lightblue);
+      font-family: 'Arial', sans-serif;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+    h1 {
+      color: #ff3399;
+      font-size: 3em;
+    }
+    .buttons {
+      margin-top: 30px;
+      position: relative;
+      width: 100%;
+      height: 100px;
+    }
+    button {
+      padding: 15px 40px;
+      font-size: 1.5em;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: absolute;
+    }
+    #yes {
+      background: #ff6699;
+      color: white;
+      left: 40%; /* ตำแหน่งเริ่มต้น */
+      top: 0;
+    }
+    #yes:hover {
+      background: #ff3366;
+    }
+    #no {
+      background: #ccc;
+      color: #333;
+      left: 55%; /* ตำแหน่งเริ่มต้น */
+      top: 0;
+    }
+    /* กล่องข้อความรัก */
+    #loveMessage {
+      display: none; 
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255,182,193,0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10;
+      animation: fadeIn 1s ease forwards;
+    }
+    #loveMessage h2 {
+      font-size: 3em;
+      color: #ff3366;
+      text-align: center;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <h1>รักเค้ามั้ย 💕</h1>
+  <div class="buttons">
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
 
-  function moveNoButton() {
-    const bodyWidth = window.innerWidth - noBtn.offsetWidth;
-    const bodyHeight = window.innerHeight - noBtn.offsetHeight;
-    const newX = Math.floor(Math.random() * bodyWidth);
-    const newY = Math.floor(Math.random() * bodyHeight);
-    noBtn.style.left = newX + "px";
-    noBtn.style.top = newY + "px";
-  }
+  <div id="loveMessage">
+    <h2>💖 เค้าก็รักแกเหมือนกันน 💖</h2>
+  </div>
 
-  // สำหรับคอมพิวเตอร์
-  noBtn.addEventListener('mouseover', moveNoButton);
+  <script>
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+    const loveMsg = document.getElementById('loveMessage');
 
-  // สำหรับมือถือ
-  noBtn.addEventListener('touchstart', function(e) {
-    e.preventDefault(); // กันไม่ให้กดปุ่มจริง ๆ
-    moveNoButton();
-  });
+    function moveNoButton() {
+      const bodyWidth = window.innerWidth - noBtn.offsetWidth;
+      const bodyHeight = window.innerHeight - noBtn.offsetHeight;
+      const newX = Math.floor(Math.random() * bodyWidth);
+      const newY = Math.floor(Math.random() * (bodyHeight - 50)); // กันไม่ให้ทับหัวข้อ
+      noBtn.style.left = newX + "px";
+      noBtn.style.top = newY + "px";
+    }
 
-  yesBtn.addEventListener('click', function() {
-    loveMsg.style.display = 'flex';
-  });
-</script>
+    // สำหรับคอมพิวเตอร์
+    noBtn.addEventListener('mouseover', moveNoButton);
+
+    // สำหรับมือถือ
+    noBtn.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      moveNoButton();
+    });
+
+    yesBtn.addEventListener('click', function() {
+      loveMsg.style.display = 'flex';
+    });
+  </script>
+</body>
+</html>
