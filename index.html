@@ -31,8 +31,8 @@
       border: none;
       border-radius: 15px;
       cursor: pointer;
-      transition: all 0.3s ease;
       position: absolute;
+      transition: left 0.5s ease, top 0.5s ease; /* ให้ขยับแบบลื่น */
     }
     #yes {
       background: #ff6699;
@@ -98,16 +98,16 @@
       noBtn.style.top = newY + "px";
     }
 
-    // หนีในคอม
+    // คอม: หนีเมื่อเอาเมาส์ไปใกล้
     noBtn.addEventListener('mouseover', moveNoButton);
 
-    // หนีในมือถือ
+    // มือถือ: หนีเมื่อแตะ
     noBtn.addEventListener('touchstart', function(e) {
       e.preventDefault();
       moveNoButton();
     });
 
-    // กด Yes แล้วโชว์ข้อความ
+    // กด Yes โชว์ข้อความรัก
     yesBtn.addEventListener('click', function() {
       loveMsg.style.display = 'flex';
     });
