@@ -1,75 +1,50 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <title>คำถามสำหรับเธอ 💖</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(to right, pink, lightblue);
-      font-family: 'Arial', sans-serif;
-      flex-direction: column;
-    }
-    h1 {
-      color: #ff3399;
-      font-size: 3em;
-    }
-    .buttons {
-      margin-top: 30px;
-    }
-    button {
-      padding: 15px 40px;
-      font-size: 1.5em;
-      margin: 0 20px;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    #yes {
-      background: #ff6699;
-      color: white;
-    }
-    #yes:hover {
-      background: #ff3366;
-    }
-    #no {
-      background: #ccc;
-      color: #333;
-      position: relative;
-    }
-  </style>
-</head>
-<body>
-  <h1>รักเค้ามั้ย 💕</h1>
-  <div class="buttons">
-    <button id="yes" onclick="alert('รู้แล้ววว 😘 รักที่สุดเลย!')">Yes</button>
-    <button id="no">No</button>
-  </div>
+<script>
+  const noBtn = document.getElementById('no');
+  const yesBtn = document.getElementById('yes');
+  const loveMsg = document.getElementById('loveMessage');
+  let noScale = 1;
+  let yesScale = 1;
 
-  <script>
-    const noBtn = document.getElementById('no');
-    const yesBtn = document.getElementById('yes');
-    let noSize = 1;   // scale เริ่มต้น
-    let yesSize = 1;  // scale เริ่มต้น
+  noBtn.addEventListener('mouseover', function() {
+    noScale -= 0.2;
+    if (noScale <= 0) {
+      noBtn.style.display = "none";
+    } else {
+      noBtn.style.transform = `scale(${noScale})`;
+    }
 
-    noBtn.addEventListener('mouseover', function() {
-      // ขยับปุ่ม No
-      const x = Math.floor(Math.random() * 300) - 150;
-      const y = Math.floor(Math.random() * 200) - 100;
-      noBtn.style.transform = `translate(${x}px, ${y}px) scale(${noSize})`;
+    yesScale += 0.2;
+    yesBtn.style.transform = `scale(${yesScale})`;
+  });
 
-      // ทำให้ปุ่ม No เล็กลง
-      noSize -= 0.1;
-      if (noSize < 0.3) noSize = 0.3;
+  yesBtn.addEventListener('click', function() {
+    // เด้งดึ๋ง
+    yesBtn.style.animation = "bounce 0.5s";
+    setTimeout(() => {
+      yesBtn.style.animation = "";
+    }, 500);
 
-      // ทำให้ปุ่ม Yes ใหญ่ขึ้น
-      yesSize += 0.2;
-      yesBtn.style.transform = `scale(${yesSize})`;
-    });
-  </script>
-</body>
-</html>
+    // แสดงข้อความรัก
+    loveMsg.style.display = 'flex';
+
+    // สร้างหัวใจลอย
+    for (let i = 0; i < 15; i++) {
+      createFloatingHeart();
+    }
+  });
+
+  function createFloatingHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "💖";
+    heart.style.left = `${Math.random() * 100}%`;
+    heart.style.bottom = "0";
+    document.body.appendChild(heart);
+
+    // ลบหัวใจหลังจบแอนิเมชัน
+    setTimeout(() => {
+      heart.remove();
+    }, 2000);
+  }
+</script>
+
