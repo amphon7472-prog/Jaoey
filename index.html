@@ -88,4 +88,31 @@
   </div>
 
   <script>
-    const noBtn
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+    const bunnyImg = document.getElementById('bunny');
+    const loveMsg = document.getElementById('loveMessage');
+    let noClickCount = 0;
+
+    // กดปุ่ม No ได้ 4 ครั้ง
+    noBtn.addEventListener('click', function() {
+      noClickCount++;
+
+      if (noClickCount <= 2) {
+        bunnyImg.src = "images/bunny-sad.png"; // กระต่ายเศร้า
+      } else if (noClickCount <= 4) {
+        bunnyImg.src = "images/bunny-cry.png"; // กระต่ายร้องไห้
+      }
+
+      if (noClickCount >= 4) {
+        noBtn.style.display = "none"; // ซ่อนปุ่ม No หลังครั้งที่ 4
+      }
+    });
+
+    // กดปุ่ม Yes เท่านั้นถึงจะขึ้นข้อความ
+    yesBtn.addEventListener('click', function() {
+      loveMsg.style.display = 'flex';
+    });
+  </script>
+</body>
+</html>
