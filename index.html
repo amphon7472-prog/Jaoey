@@ -1,79 +1,27 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <title>คำถามสำหรับเธอ 💖</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(to right, pink, lightblue);
-      font-family: 'Arial', sans-serif;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    h1 {
-      color: #ff3399;
-      font-size: 3em;
-    }
-    .buttons {
-      margin-top: 30px;
-    }
-    button {
-      padding: 15px 40px;
-      font-size: 1.5em;
-      margin: 0 20px;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    #yes {
-      background: #ff6699;
-      color: white;
-      transform: scale(1);
-    }
-    #yes:hover {
-      background: #ff3366;
-    }
-    #no {
-      background: #ccc;
-      color: #333;
-      position: relative;
-      transform: scale(1);
-    }
-    /* กล่องข้อความรัก */
-    #loveMessage {
-      display: none; /* ซ่อนตั้งแต่เริ่มต้น */
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(255,182,193,0.95);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 10;
-      animation: fadeIn 1s ease forwards;
-    }
-    #loveMessage h2 {
-      font-size: 3em;
-      color: #ff3366;
-      text-align: center;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  </style>
-</head>
-<body>
-  <h1>รักเค้ามั้ย 💕</h1>
-  <div class="buttons">
-    <button id="yes">Yes</button>
-    <button id="no">No</button>
-  </div>
+<script>
+  const noBtn = document.getElementById('no');
+  const yesBtn = document.getElementById('yes');
+  const loveMsg = document.getElementById('loveMessage');
 
-  <div id="loveMessage">
-    <h2>💖
+  function moveNoButton() {
+    const bodyWidth = window.innerWidth - noBtn.offsetWidth;
+    const bodyHeight = window.innerHeight - noBtn.offsetHeight;
+    const newX = Math.floor(Math.random() * bodyWidth);
+    const newY = Math.floor(Math.random() * bodyHeight);
+    noBtn.style.left = newX + "px";
+    noBtn.style.top = newY + "px";
+  }
+
+  // สำหรับคอมพิวเตอร์
+  noBtn.addEventListener('mouseover', moveNoButton);
+
+  // สำหรับมือถือ
+  noBtn.addEventListener('touchstart', function(e) {
+    e.preventDefault(); // กันไม่ให้กดปุ่มจริง ๆ
+    moveNoButton();
+  });
+
+  yesBtn.addEventListener('click', function() {
+    loveMsg.style.display = 'flex';
+  });
+</script>
