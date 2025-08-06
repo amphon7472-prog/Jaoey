@@ -2,110 +2,157 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ตอบให้ถูกนะเว้ยยย" />
-  <title>คำถามสำหรับเธอ 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> บททดสอบว่าเบ้บรักเค้าจริงมั้ย </title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(to right, pink, lightblue);
-      font-family: Arial, sans-serif;
-      flex-direction: column;
-      overflow: hidden;
-      position: relative;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(135deg, #ffe6f0, #e0f7fa);
+      color: #444;
+      padding: 30px;
     }
     h1 {
-      color: #ff3399;
-      font-size: 2.5em;
-      margin: 0;
+      color: #ff66a3;
       text-align: center;
     }
-    .buttons {
-      margin-top: 30px;
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffffaa;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+      color: #ff4081;
+    }
+    .option {
+      margin-top: 10px;
+    }
+    .option input {
+      margin-right: 10px;
+    }
+    textarea {
       width: 100%;
-      height: 200px;
-      position: relative;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
     }
     button {
-      padding: 15px 40px;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      position: absolute;
-      transition: left 0.5s ease, top 0.5s ease;
-    }
-    #yes {
-      background: #ff6699;
+      margin-top: 20px;
+      background-color: #ff66a3;
       color: white;
-      left: 40%;
-      top: 60px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
     }
-    #yes:hover {
-      background: #ff3366;
+    button:hover {
+      background-color: #e64a94;
     }
-    #no {
-      background: #ccc;
-      color: #333;
-      left: 55%;
-      top: 60px;
-    }
-    #loveMessage {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(255,182,193,0.95);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 10;
-      animation: fadeIn 1s ease forwards;
-    }
-    #loveMessage h2 {
-      font-size: 2em;
-      color: #ff3366;
+    #result {
       text-align: center;
-      margin: 0;
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #d50000;
     }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    .note {
+      text-align: center;
+      margin-top: 15px;
+      color: #ff1744;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <h1>รักเค้ามั้ย 💕</h1>
-  <div class="buttons">
-    <button id="yes">Yes</button>
-    <button id="no">No</button>
-  </div>
+  <h1> ตอบให้ถูกนะเว้ยยย </h1>
+  <form id="loveQuiz">
+    <!-- Q1 -->
+    <label>1. แกรักเค้ามั้ย 💘</label>
+    <div class="option">
+      <input type="radio" name="q1" value="ถูก" required> ก. รักมากกกก<br>
+      <input type="radio" name="q1" value="ผิด"> ข. ไม่รักแล้ว
+    </div>
 
-  <div id="loveMessage">
-    <h2>💖 เค้าก็รักอ้วนเหมือนกันอิอิหิหิฮ่าฮ่าาา 💖</h2>
-  </div>
+    <!-- Q2 -->
+    <label>2. เราคบกันวันไหน 💑</label>
+    <div class="option">
+      <input type="radio" name="q2" value="ถูก" required> ก. 10 ก.ย<br>
+      <input type="radio" name="q2" value="ผิด"> ข. 11 ก.ย
+    </div>
+
+    <!-- Q3 -->
+    <label>3. เราอยู่ด้วยกันมากี่วันแล้ว ⏳</label>
+    <div class="option">
+      <input type="radio" name="q3" value="ผิด" required> ก. 330 วัน<br>
+      <input type="radio" name="q3" value="ถูก"> ข. 331 วัน
+    </div>
+
+    <!-- Q4 -->
+    <label>4. เค้าชอบกินอะไร 🍳</label>
+    <div class="option">
+      <input type="radio" name="q4" value="ผิด" required> ก. ผัดกระเพรา<br>
+      <input type="radio" name="q4" value="ถูก"> ข. ไข่ดาว
+    </div>
+
+    <!-- Q5 -->
+    <label>5. อยากไปเที่ยวกับเค้ามั้ย แล้วอยากไปที่ไหน 🌈</label>
+    <div class="option">
+      <textarea name="q5" rows="3" placeholder="พิมพ์คำตอบของเธอตรงนี้นะ..." required></textarea>
+    </div>
+
+    <button type="submit">ส่งคำตอบ 💌</button>
+    <div class="note">ตอบให้ถูกนะเว้ยยย😡😡</div>
+  </form>
+
+  <div id="result"></div>
 
   <script>
-    const noBtn = document.getElementById("no");
-    const yesBtn = document.getElementById("yes");
-    const loveMsg = document.getElementById("loveMessage");
+    document.getElementById("loveQuiz").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-    function moveNoButton() {
-      const bodyWidth = window.innerWidth - noBtn.offsetWidth;
-      const bodyHeight = window.innerHeight - noBtn.offsetHeight;
-      const newX = Math.floor(Math.random() * bodyWidth);
-      const newY = Math.floor(Math.random() * bodyHeight);
-      noBtn.style.left = newX + "px";
-      noBtn.style.top = newY + "px";
-    }
+      let wrong = 0;
 
-    // คอมพิวเตอร์
-    noBtn.addEventListener("mouseover", moveNoButton);
+      const q1 = document.querySelector('input[name="q1"]:checked').value;
+      const q2 = document.querySelector('input[name="q2"]:checked').value;
+      const q3 = document.querySelector('input[name="q3"]:checked').value;
+      const q4 = document.querySelector('input[name="q4"]:checked').value;
+
+      if (q1 === "ผิด") {
+        alert("ตอบผิดเว้ย งอนแล้ว 😤");
+        wrong++;
+      }
+
+      if (q2 === "ผิด") {
+        alert("ทำไมจำไม่ได้ เค้าโกรธแล้วนะห้วย 😠");
+        wrong++;
+      }
+
+      if (q3 === "ผิด") {
+        alert("ทำไมจำไม่ได้ เค้าร้องไห้แล่ว 😿😿");
+        wrong++;
+      }
+
+      if (q4 === "ผิด") {
+        alert("จำไม่ได้อีกแล้วนะห้วยอ้วนอ่ะ 🐷💔");
+        wrong++;
+      }
+
+      let result = document.getElementById("result");
+      if (wrong >= 2) {
+        result.textContent = "อื้อเบ้บตอบผิดตั้งหลายข้อ ไม่รักเค้าแล้วอะดิ้ 😭💔";
+      } else {
+        result.textContent = "เย้อ้วนรักเค้าาา เค้ารักอ้วนน้าา 💕";
+      }
+    });
+  </script>
+</body>
+</html>    noBtn.addEventListener("mouseover", moveNoButton);
 
     // มือถือ
     noBtn.addEventListener("touchstart", function(e) {
